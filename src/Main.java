@@ -3,7 +3,7 @@
 //
 //    Use a for-loop to process the elements of the array, and apply the following transformations to each element:
 //        Remove all whitespace characters from the string.
-//        Convert the string to lowercase.
+//        Convert the string to uppercase.
 //        Reverse the order of the characters in the string.
 //
 //    Use the Arrays.sort() method to sort the transformed strings in ascending order based on the length of each string.
@@ -14,40 +14,34 @@
 //    Use the forEach() method to iterate over the entries in the map, and print out each string, along with its length and the
 //    number of occurrences in the original array.
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-        // String[] arr = new String[];
-        //arr = crearArray(50);
-        // aplicarTransformaciones(arr);
+        StringBuilder[] arr = new StringBuilder[1];
+        arr = crearArray(50);
+        aplicarTransformaciones(arr);
 
-        System.out.println("--" + generarString(10) + "--");
-        System.out.println("--" + generarString(10) + "--");
-        System.out.println("--" + generarString(10) + "--");
-        System.out.println("--" + generarString(10) + "--");
-        System.out.println("--" + generarString(10) + "--");
-        System.out.println("--" + generarString(10) + "--");
-        System.out.println("--" + generarString(10) + "--");
-
+        System.out.println(Arrays.toString(arr));
     }
 
 
-    public static String[] crearArray(int tamaño) {
-        String[] arr = new String[tamaño];
+    public static StringBuilder[] crearArray(int tamaño) {
+        StringBuilder[] arr = new StringBuilder[tamaño];
         Random random = new Random();
         StringBuilder sb = new StringBuilder();
 
 
         // Recorre los valores del array del 0 al array.length
         for (int i = 0; i < arr.length; i++) {
-
+            arr[i] = generarString(20);
         }
         return arr;
     }
 
-    public static String[] aplicarTransformaciones(String[] arr) {
-        String[] arrTransformado = new String[arr.length];
+    public static StringBuilder[] aplicarTransformaciones(StringBuilder[] arr) {
+        StringBuilder[] arrTransformado = new StringBuilder[arr.length];
         return arrTransformado;
     }
 
@@ -66,13 +60,10 @@ public class Main {
                     res.append(" ");
                     break;
                 case 2:
-                    res.append((char) (random.nextInt(26) + 'a'));
+                    res.append((char)(random.nextInt(26) + 'a'));
                     break;
             }
-
-
         }
-
         return res;
     }
 }
