@@ -21,11 +21,10 @@ public class Main {
     public static void main(String[] args) {
          String[] arr = new String[1];
          arr = crearArray(50);
+        System.out.println(Arrays.toString(arr));
          aplicarTransformaciones(arr);
+        System.out.println(Arrays.toString(arr));
 
-        String mensaje = "Hola";
-        System.out.println(mensaje);
-        System.out.println(invertirOrden(mensaje));
     }
 
 
@@ -49,7 +48,7 @@ public class Main {
         for (int i = 0; i < arr.length; i++) {
             // Si hay algún espacio, lo elimina
             for (int j = 0; j < arr[i].length(); j++) {
-                if (arr[j].charAt(j) == ' ') {
+                if (arr[i].charAt(j) == ' ') {
                     arr[i] = arr[i].replaceAll(" ", "");
                 }
             }
@@ -60,7 +59,9 @@ public class Main {
 
             arr [i] = invertirOrden(arr[i]);
 
+
         }
+        Arrays.sort(arr, (s1, s2) -> s1.length() - s2.length());
       return arr;
     }
 
