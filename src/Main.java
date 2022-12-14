@@ -6,13 +6,8 @@
 //        Convert the string to uppercase.
 //        Reverse the order of the characters in the string.
 //
-//    Use the Arrays.sort() method to sort the transformed strings in ascending order based on the length of each string.
-//
-//    Use a Map object to store the number of occurrences of each string in the original array. Use the forEach() method to iterate over
-//    the sorted array and add each string to the map, incrementing its count if it already exists in the map.
-//
-//    Use the forEach() method to iterate over the entries in the map, and print out each string, along with its length and the
-//    number of occurrences in the original array.
+//    Sort the transformed strings in ascending order based on the length of each string.
+
 
 import java.util.Arrays;
 import java.util.Random;
