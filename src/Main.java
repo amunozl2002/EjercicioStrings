@@ -19,30 +19,64 @@ import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-        StringBuilder[] arr = new StringBuilder[1];
-        arr = crearArray(50);
-        aplicarTransformaciones(arr);
+         String[] arr = new String[1];
+         arr = crearArray(50);
+         aplicarTransformaciones(arr);
 
-        System.out.println(Arrays.toString(arr));
+        String mensaje = "Hola";
+        System.out.println(mensaje);
+        System.out.println(invertirOrden(mensaje));
     }
 
 
-    public static StringBuilder[] crearArray(int tamaño) {
-        StringBuilder[] arr = new StringBuilder[tamaño];
+    public static String[] crearArray(int tamaño) {
+        String[] arr = new String[tamaño];
         Random random = new Random();
-        StringBuilder sb = new StringBuilder();
+        String sb = new String();
 
 
         // Recorre los valores del array del 0 al array.length
         for (int i = 0; i < arr.length; i++) {
-            arr[i] = generarString(20);
+            arr[i] = String.valueOf(generarString(20));
         }
         return arr;
     }
 
-    public static StringBuilder[] aplicarTransformaciones(StringBuilder[] arr) {
-        StringBuilder[] arrTransformado = new StringBuilder[arr.length];
-        return arrTransformado;
+    public static String[] aplicarTransformaciones(String[] arr) {
+
+
+        // Recorre todos los elementos del array de uno en uno
+        for (int i = 0; i < arr.length; i++) {
+            // Si hay algún espacio, lo elimina
+            for (int j = 0; j < arr[i].length(); j++) {
+                if (arr[j].charAt(j) == ' ') {
+                    arr[i] = arr[i].replaceAll(" ", "");
+                }
+            }
+            // Cambia todo a mayusculas
+            arr[i] = arr[i].toUpperCase();
+
+            // Invierte el orden de los caracteres
+
+            arr [i] = invertirOrden(arr[i]);
+
+        }
+      return arr;
+    }
+
+    public static String invertirOrden(String str) {
+        StringBuilder res = new StringBuilder();
+
+        char[] arrayChars = str.toCharArray();
+        char[] nuevoArrayChars = new char[arrayChars.length];
+
+        for (int i = 0; i < arrayChars.length; i++) {
+            nuevoArrayChars[arrayChars.length - i - 1] = arrayChars[i];
+        }
+
+        String invertida = new String(nuevoArrayChars);
+
+        return invertida;
     }
 
     public static StringBuilder generarString(int tamaño) {
