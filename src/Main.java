@@ -7,18 +7,34 @@
 //        Reverse the order of the characters in the string.
 //
 //    Sort the transformed strings in ascending order based on the length of each string.
+//    Use a Map object to store the number of occurrences of each string in the original array. Use the forEach() method to iterate over
+//    the sorted array and add each string to the map, incrementing its count if it already exists in the map.
+//
+//    Use the forEach() method to iterate over the entries in the map, and print out each string, along with its length and the
+//    number of occurrences in the original array.
 
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
 public class Main {
+    static int ocurrencias;
     public static void main(String[] args) {
-         String[] arr = new String[1];
-         arr = crearArray(50);
+        String[] arr = new String[1];
+        arr = crearArray(50);
+        Map map = new Map();
+
+
+
+        System.out.println("Array antes de la transformación:");
         System.out.println(Arrays.toString(arr));
-         aplicarTransformaciones(arr);
+        aplicarTransformaciones(arr);
+        System.out.println("Array después de la transformación:");
         System.out.println(Arrays.toString(arr));
+
+        comprobarOcurrencias(arr, map.lista);
+
 
     }
 
@@ -52,12 +68,12 @@ public class Main {
 
             // Invierte el orden de los caracteres
 
-            arr [i] = invertirOrden(arr[i]);
+            arr[i] = invertirOrden(arr[i]);
 
 
         }
         Arrays.sort(arr, (s1, s2) -> s1.length() - s2.length());
-      return arr;
+        return arr;
     }
 
     public static String invertirOrden(String str) {
@@ -79,7 +95,7 @@ public class Main {
         Random random = new Random();
         StringBuilder res = new StringBuilder();
 
-        for (int i=1; i < tamaño; i++) {
+        for (int i = 1; i < tamaño; i++) {
             int rnd = random.nextInt(3);
 
             switch (rnd) {
@@ -90,10 +106,23 @@ public class Main {
                     res.append(" ");
                     break;
                 case 2:
-                    res.append((char)(random.nextInt(26) + 'a'));
+                    res.append((char) (random.nextInt(26) + 'a'));
                     break;
             }
         }
         return res;
+    }
+
+    private static void comprobarOcurrencias(String[] arr, ArrayList lista) {
+        // recorre el array entero desde 0 hasta array.length
+        for (int i = 0; i < arr.length; i++) {
+            // si el valor ya está la lista -> valor.ocurrencias++, si no -> lo añado al array (y le doy valor.ocurrencias = 1)
+            if (lista.contains(arr[i]) == true) {
+                ocurrencias++;
+            } else {
+                lista.add(arr[i]);
+            }
+
+        }
     }
 }
