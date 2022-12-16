@@ -12,18 +12,18 @@
 //
 //    Use the forEach() method to iterate over the entries in the map, and print out each string, along with its length and the
 //    number of occurrences in the original array.
-
-
+import java.util.Map;
+import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Random;
 
+
 public class Main {
-    static int ocurrencias;
     public static void main(String[] args) {
         String[] arr = new String[1];
         arr = crearArray(50);
-        Map map = new Map();
 
 
 
@@ -33,8 +33,7 @@ public class Main {
         System.out.println("Array después de la transformación:");
         System.out.println(Arrays.toString(arr));
 
-        comprobarOcurrencias(arr, map.lista);
-
+        pintarMapa(comprobarOcurrencias(arr));
 
     }
 
@@ -113,15 +112,25 @@ public class Main {
         return res;
     }
 
-    private static void comprobarOcurrencias(String[] arr, ArrayList lista) {
-        // recorre el array entero desde 0 hasta array.length
-        for (int i = 0; i < arr.length; i++) {
-            // si el valor ya está la lista -> valor.ocurrencias++, si no -> lo añado al array (y le doy valor.ocurrencias = 1)
-            if (lista.contains(arr[i]) == true) {
-                ocurrencias++;
+    private static Map<String, Integer>  comprobarOcurrencias(String[] arr, ArrayList lista) {
+       // key, value
+        Map<String, Integer> mapa = new HashMap();
+
+        for (String a: arr) {
+            if (mapa.containsKey(a)) {
+                mapa.get(a);
+                mapa.put(a, mapa.get(a) + 1);
             } else {
-                lista.add(arr[i]);
+                mapa.put(a, 1);
             }
+        }
+        return mapa;
+    }
+
+    private static void pintarMapa (Map<String, Integer> mapa) {
+        for (String str : mapa.keySet()) {
+            System.out.println(str);
+            System.out.println(mapa.get(str));
 
         }
     }
